@@ -6,7 +6,7 @@ int main()
     std::shared_ptr<routing_ns::routing> route_plan = std::make_shared<routing_ns::routing>();
 
     route_plan->Config_Routing("/home/ugv-yu/GPP/osrm-backend/kyxz.osrm", false, osrm::EngineConfig::Algorithm::MLD);
-    route_plan->Parameter_Routing("/home/ugv-yu/GPP/osrm-backend/example/KYXZ2018A.txt", true);
+    route_plan->Parameter_Routing("/home/ugv-yu/GPP/osrm-backend/example/plan_file2018.txt", true);
     
     if(route_plan->Start_Routing())
     {
