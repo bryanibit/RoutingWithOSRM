@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# usage format
+# Generate_osrm data.osm car.lua
+NONE='\033[00m'
+RED='\033[01;31m'
+GREEN='\033[01;32m'
+YELLOW='\033[01;33m'
+if [ $# -eq 2 ] 
+then
+    if [ -f $1 ]; then
+        if [ -f $2  ]; then
+            echo -e "${RED}Begin Extracting${NONE}!"
+            osrm-extract $1 -p $2
+            export OSRM="$(find ./ -name "*\.osrm")"
+            echo -e "${GREEN}Finish Extracting${NONE}\n"
+            echo -e "${RED}Begin Partition${NONE}"
+            osrm-partition $OSRM
+            echo -e "${GREEN}Finish Partition${NONE}\n"
+            echo -e "${RED}Begin Customizing${NONE}"
+            osrm-customize $OSRM
+            echo -e "${GREEN}Finish Customizing${NONE}"
+        else
+            echo 'not existed lua file'
+        fi
+    else
+        echo 'Not existed osm or osm.pbf file'
+    fi
+else
+    echo 'Please input: Generate_osrm *.osm/.osm.pbf *.lua'
+    echo 'Exit'
+    exit
+fi
