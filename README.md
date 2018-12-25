@@ -7,6 +7,7 @@
 5. ```mkdir build``` in the root directory and ```cmake ..```, ```make```  
 
 ## Note 
+
 * .osrm is created from  
 ```
 osrm-extract *.osm.pbf -p profiles/car.lua
@@ -14,10 +15,12 @@ osrm-partition *.osrm
 osrm-customize *.osrm
 ```
 
+You can also replace the above with ```Generate_osrm *.osm.pbf car.lua```.
+
 * plan_file2018.txt format:
 ```
 100.000 40.000 90.0 2
 longitude latitude height attribute
 ```
 
-Attribute represents different points
+Attribute represents different points.
